@@ -26,5 +26,8 @@
 
 ### 创建并配置视图对象
 
+创建视图最简单的方式是使用**Interface Builder**直接将视图添加到界面上，代码创建视图的默认方式是调用视图的`initWithFrame`方法，此方法会设置好视图相对于父视图的初始大小和位置。
 
+
+有关视图控制器如何加载和管理其关联的nib文件的信息可以参看[View Controller Programming Guide for iOS](https://developer.apple.com/library/content/featuredarticles/ViewControllerPGforiPhoneOS/index.html#//apple_ref/doc/uid/TP40007457)，有关从xib文件中以编程方式加载视图的信息可以参看[Nib Files](https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/LoadingResources/CocoaNibs/CocoaNibs.html#//apple_ref/doc/uid/10000051i-CH4)。
 
