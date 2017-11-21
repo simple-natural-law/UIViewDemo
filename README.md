@@ -36,4 +36,30 @@ Interface Builder是创建视图层次结构最便捷的方式，因为我们可
 
 可以在视图控制器的`loadView`或者`viewDidLoad`方法中添加子视图到当前视图层。如果是以编程方式创建视图，则在视图控制器的`loadView`方法中创建添加视图。无论是以编程方式创建视图还是从**nib文件**中加载视图，都可以放在视图控制器的`viewDidLoad`方法中执行。
 
+将子视图添加到另一个视图时，UIKit会通知父视图和子视图。在实现自定义视图时，可以通过覆写`willMoveToSuperview:`、`willMoveToWindow:`、`willRemoveSubview:`、`didAddSubview:`、`didMoveToSuperview`或者`didMoveToWindow`方法中一个或者多个来拦截这些通知。可以使用这些通知来更新与视图层次结构相关的任何状态信息或者执行其它任务。
+
+### 隐藏视图
+
+要以可视化方式隐藏视图，可以将视图的`hidden`属性值设为`YES`或者将其`alpha`属性值设为`0.0`。被隐藏的视图不会从系统接收到触摸事件，但是可以参与与视图层次结构相关的自动调整和其它布局操作。如果想要动画隐藏或呈现视图，必须使用视图的`alpha`属性，`hidden`属性不支持动画。
+
+### 在视图层中定位视图
+
+在视图层中定位视图有2种方法：
+
+- 在适当位置存储视图对象的指针，例如在拥有此视图的视图控制器中。
+- 为每个视图的`tag`属性分配一个**唯一的整数**，并调用其父视图或者其父视图的更下层父视图的`viewWithTag:`方法来定位它。
+
+`viewWithTag:`方法会从调用该方法的视图的视图分支遍历视图获取对应`tag`值的视图，在使用该方法定位视图时，调用其父视图的`viewWithTag:`方法比调用其父视图的更下层父视图的`viewWithTag:`方法的效率要快。
+
+### 平移、 缩放和旋转视图
+
+每个视图对象都关联有一个`transform`仿射变换属性，可以通过配置`transform`属性值来平移、 缩放和旋转视图的内容。`UIView`的`transform`属性包含一个`CGAffineTransform`结构体，默认情况下，不会修改视图的外观。我们可以随时分配一个新的转换，例如将视图旋转45度，可以使用以下代码：
+```
+CGAffineTransform xform = CGAffineTransformMakeRotation(M_PI/4.0);
+
+self.view.transform = xform;
+```
+将多个转换同时应用于视图时，将这些转换添加到`CGAffineTransform`结构体的顺序非常重要。先旋转视图然后平移视图与先平移视图然后旋转视图的最终效果是不一样的，即使在每种情况下旋转和平移的数值都是一样的。此外，任何转换都是相对于视图的中心点而变换的。缩放和旋转视图时，不会改变视图的中心点。有关创建和使用仿射变换的更多信息，可以参看[Quartz 2D Programming Guide](https://developer.apple.com/library/content/documentation/GraphicsImaging/Conceptual/drawingwithquartz2d/Introduction/Introduction.html#//apple_ref/doc/uid/TP30001066)中的[Transforms](https://developer.apple.com/library/content/documentation/GraphicsImaging/Conceptual/drawingwithquartz2d/dq_affine/dq_affine.html#//apple_ref/doc/uid/TP30001066-CH204).
+
+
 
