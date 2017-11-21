@@ -61,5 +61,29 @@ self.view.transform = xform;
 ```
 将多个转换同时应用于视图时，将这些转换添加到`CGAffineTransform`结构体的顺序非常重要。先旋转视图然后平移视图与先平移视图然后旋转视图的最终效果是不一样的，即使在每种情况下旋转和平移的数值都是一样的。此外，任何转换都是相对于视图的中心点而变换的。缩放和旋转视图时，不会改变视图的中心点。有关创建和使用仿射变换的更多信息，可以参看[Quartz 2D Programming Guide](https://developer.apple.com/library/content/documentation/GraphicsImaging/Conceptual/drawingwithquartz2d/Introduction/Introduction.html#//apple_ref/doc/uid/TP30001066)中的[Transforms](https://developer.apple.com/library/content/documentation/GraphicsImaging/Conceptual/drawingwithquartz2d/dq_affine/dq_affine.html#//apple_ref/doc/uid/TP30001066-CH204).
 
+### 坐标转换
+
+在某些情况下，特别是在处理触摸事件时，应用程序可能需要将视图的坐标参考系从一个视图转移到另一个视图。例如触摸事件会报告每次触摸在`window`坐标系中位置，但通常我们只需要视图在其所在视图层分支中的视图坐标系中的位置。`UIView`类定义了以下转换视图坐标参考系的方法：
+
+- `convertPoint:fromView:`
+- `convertRect:fromView:`
+- `convertPoint:toView:`
+- `convertRect:toView:`
+
+`convert...:fromView:`方法将坐标点的坐标参考系从给定视图的坐标系转换为调用此方法的视图的局部坐标系，而`convert...:toView:`则将坐标点的坐标参考系从调用此方法的视图的局部坐标系转换为给定视图的坐标系。如果这两类方法的给定参考视图为`nil`，则会自动指定参考视图为当前视图所在的`window`。
+
+`UIWindow`也定义了几种转换坐标参考系的方法：
+
+- `convertPoint:fromWindow:`
+- `convertRect:fromWindow:`
+- `convertPoint:toWindow:`
+- `convertRect:toWindow:`
+
+在被旋转过的视图中转换坐标时，UIKit会假定一个大小刚好包含此被旋转过视图的屏幕区域为坐标点的坐标参考系，如下图所示：
+
+![图2-2](https://developer.apple.com/library/content/documentation/WindowsViews/Conceptual/ViewPG_iPhoneOS/Art/uiview_convert_rotated.jpg)
+
+## 在运行时调整视图的大小和位置
+
 
 
