@@ -101,10 +101,17 @@ self.view.transform = xform;
 
 当视图的大小发生更改时，通常需要更改其子视图的位置和大小以适配其父视图的大小。父视图的`autoresizesSubviews`属性决定子视图是否调整大小，如果此属性值为`YES`，则该父视图会根据其子视图的`autoresizingMask`属性来确定如何调整和定位该子视图。对任何子视图的大小进行更改也会触发子视图的子视图的布局调整。
 
-对于视图层中的每个视图，要使其支持自动布局，就必须将其`autoresizingMask`属性设置为合适的值。下表列出了可应用于视图的自动调整布局选项，并描述了其在布局操作期间所起的效果。
+对于视图层中的每个视图，要使其支持自动布局，就必须将其`autoresizingMask`属性设置为合适的值。下表列出了可应用于视图的自动调整布局选项，并描述了其在布局操作期间所起的效果。为`autoresizingMask`属性分配值时，可以使用**OR运算符组合这些常量**，或者将这些常量相加后再赋值。
 
 | Autoresizing mask | 描述 |
 | --------------------- | ------ |
+| UIViewAutoresizingNone | 视图不会自动调整大小(默认值) |
+| UIViewAutoresizingFlexibleHeight | 视图的高度随着父视图高度的改变而改变。如果不包含此常量，则视图的高度不会改变。 |
+| UIViewAutoresizingFlexibleWidth | 视图的宽度随着父视图宽度的改变而改变。如果不包含此常量，则视图的宽度不会改变。 |
+| UIViewAutoresizingFlexibleLeftMargin | 视图左边缘到父视图左边缘的距离根据需要增大或减小。如果不包含此常量，则视图左边缘到父视图左边缘的距离会固定不变。  |
+| UIViewAutoresizingFlexibleRightMargin | 视图右边缘到父视图右边缘的距离根据需要增大或减小。如果不包含此常量，则视图右边缘到父视图右边缘的距离会固定不变。 |
+| UIViewAutoresizingFlexibleBottomMargin | 视图底部边缘到父视图底部边缘的距离根据需要增大或减小。如果不包含此常量，则视图底部边缘到父视图底部边缘的距离会固定不变。 |
+| UIViewAutoresizingFlexibleTopMargin | 视图顶部边缘到父视图顶部边缘的距离根据需要增大或减小。如果不包含此常量，则视图顶部边缘到父视图顶部边缘的距离会固定不变。 |
 
 
 
