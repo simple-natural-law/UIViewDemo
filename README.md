@@ -97,7 +97,7 @@ self.view.transform = xform;
 - 调用视图的`setNeedsLayout`或者`layoutIfNeeded`方法来强制执行布局。
 - 调用视图图层的`setNeedsLayout`方法来强制布局。
 
-### 使用自动调整规则自动处理布局更改
+### 自动调整视图布局
 
 当视图的大小发生更改时，通常需要更改其子视图的位置和大小以适配其父视图的大小。父视图的`autoresizesSubviews`属性决定子视图是否调整大小，如果此属性值为`YES`，则该父视图会根据其子视图的`autoresizingMask`属性来确定如何调整和定位该子视图。对任何子视图的大小进行更改也会触发子视图的子视图的布局调整。
 
@@ -113,6 +113,17 @@ self.view.transform = xform;
 | UIViewAutoresizingFlexibleBottomMargin | 视图底部边缘到父视图底部边缘的距离根据需要增大或减小。如果不包含此常量，则视图底部边缘到父视图底部边缘的距离会固定不变。 |
 | UIViewAutoresizingFlexibleTopMargin | 视图顶部边缘到父视图顶部边缘的距离根据需要增大或减小。如果不包含此常量，则视图顶部边缘到父视图顶部边缘的距离会固定不变。 |
 
+![图3-1](https://developer.apple.com/library/content/documentation/WindowsViews/Conceptual/ViewPG_iPhoneOS/Art/uiview_autoresize.jpg)
 
+### 手动调整视图布局
+
+当视图的大小更改时，UIKit就会应用其子视图的自动调整行为，之后会调用视图的`layoutSubviews`方法。当自定义视图的子视图的自动调整行为不能满足我们的需要时，可以实现该自定义视图的`layoutSubviews`方法并在其中执行以下任何操作：
+
+- 调整任何子视图的大小和位置。
+- 添加或删除子视图或者核心动画图层。
+- 通过调用子视图的`setNeedsDisplay`或者`setNeedsDisplayInRect:`方法强制其执行重绘。
+- 在实现一个大的可滚动区域时，经常需要手动布局子视图。由于直接用一个足够大的视图来呈现可滚动内容是不切实际的，所以应用程序通常会实现一个根视图，其中包含许多较小的视图块。每个小视图块代表可滚动内容的一部分。当滚动事件发生时，根视图调用其`setNeedsLayout`方法来执行重绘，之后调用`layoutSubviews`方法并在该方法中根据发生的滚动量重新定位平铺小视图块。
+
+## 在运行时修改视图
 
 
