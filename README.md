@@ -177,10 +177,19 @@ self.view.transform = xform;
 ```
 可以添加任意数量的子图层到视图的图层，有关如何直接使用图层的信息，可以参看[Core Animation Programming Guide](https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/CoreAnimation_guide/Introduction/Introduction.html#//apple_ref/doc/uid/TP40004514)。
 
-## 自定义视图
+## 视图绘图周期
 
-如果UIKit提供的标准视图不能满足需求，可以定义一个自定义视图来完全控制应用程序内容的外观以及如何处理与该内容的交互。
+当首次显示视图时，或者由于布局更改而全部或部分视图变为可见时，系统会调用视图的`drawRect:`方法来绘制其内容。在此方法中，需要将视图的内容绘制到当前图形上下文中，该图形上下文在调用此方法之前由系统自动设置。**注意，系统每次设置当前图形上下文可能并不相同，所以在每次绘制时，需要使用`UIGraphicsGetCurrentContext`方法来重新获取当前图形上下文。*
+
+当视图的实际内容发生变化时，需要调用视图的`setNeedsDisplay`或者`setNeedsDisplayInRect:`方法来通知系统当前视图需要重新绘制。这些方法会标记当前视图需要更新，系统会在下一个绘图周期中更新视图。由于在调用这些方法后，系统会等到下一个绘图周期才更新视图，所以可以在多个视图中调用这些方法来同时更新它们。
 
 **注意：如果使用OpenGL ES来执行绘图，则应使用`GLKView`类，有关如何使用OpenGL ES进行绘制的更多信息，可以参看[OpenGL ES Programming Guide](https://developer.apple.com/library/content/documentation/3DDrawing/Conceptual/OpenGLES_ProgrammingGuide/Introduction/Introduction.html#//apple_ref/doc/uid/TP40008793)。**
 
 
+## 自定义视图
+
+如果希望自定义打印输出视图信息，可以实现`drawRect:forViewPrintFormatter:`方法。有关如何支持打印输出视图的详细信息，可以参看[Drawing and Printing Guide for iOS](https://developer.apple.com/library/content/documentation/2DDrawing/Conceptual/DrawingPrintingiOS/Introduction/Introduction.html#//apple_ref/doc/uid/TP40010156)。
+
+## 动画
+
+视图的`frame`、`bounds`、`center`、`transform`、`alpha`和`backgroundColor`属性是可以动画更改的。
