@@ -179,4 +179,8 @@ self.view.transform = xform;
 
 ## 自定义视图
 
+如果UIKit提供的标准视图不能满足需求，可以定义一个自定义视图来完全控制应用程序内容的外观以及如何处理与该内容的交互。
+
+**注意：如果使用OpenGL ES来执行绘图，则应使用`GLKView`类，有关如何使用OpenGL ES进行绘制的更多信息，可以参看[OpenGL ES Programming Guide](https://developer.apple.com/library/content/documentation/3DDrawing/Conceptual/OpenGLES_ProgrammingGuide/Introduction/Introduction.html#//apple_ref/doc/uid/TP40008793)。**
+
 
