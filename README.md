@@ -141,8 +141,42 @@ self.view.transform = xform;
 
 有关**Core Animation**提供的不同类型的图层对象的更多信息，可以参看[Core Animation Reference Collection](https://developer.apple.com/documentation/quartzcore)。
 
-### 在视图中添加图层对象
+### 在视图中嵌入图层对象
 
+如果要使用图层对象而不用视图，则可以根据需要将自定义图层对象添加到图层中。自定义图层对象是属于`CALayer`类的任何实例，通常以编程方式来创建自定义图层，并使用Core Animation的规则将其合并。自定义图层不会接收到事件，也不会参与响应者链，但能根据Core Animation的规则绘制自己的图形并响应其父视图或父图层中的大小更改。
 
+使用自定义图层对象显示静态图片的代码如下：
+
+```
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+
+    // Create the layer.
+    CALayer* myLayer = [[CALayer alloc] init];
+
+    // Set the contents of the layer to a fixed image. And set
+    // the size of the layer to match the image size.
+    UIImage layerContents = [[UIImage imageNamed:@"myImage"] retain];
+    CGSize imageSize = layerContents.size;
+
+    myLayer.bounds = CGRectMake(0, 0, imageSize.width, imageSize.height);
+    myLayer = layerContents.CGImage;
+
+    // Add the layer to the view.
+    CALayer*    viewLayer = self.view.layer;
+    [viewLayer addSublayer:myLayer];
+
+    // Center the layer in the view.
+    CGRect        viewBounds = backingView.bounds;
+    myLayer.position = CGPointMake(CGRectGetMidX(viewBounds), CGRectGetMidY(viewBounds));
+
+    // Release the layer, since it is retained by the view's layer
+    [myLayer release];
+}
+```
+可以添加任意数量的子图层到视图的图层，有关如何直接使用图层的信息，可以参看[Core Animation Programming Guide](https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/CoreAnimation_guide/Introduction/Introduction.html#//apple_ref/doc/uid/TP40004514)。
+
+## 自定义视图
 
 
