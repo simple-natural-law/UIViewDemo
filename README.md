@@ -106,12 +106,12 @@ self.view.transform = xform;
 | Autoresizing mask | 描述 |
 | --------------------- | ------ |
 | UIViewAutoresizingNone | 视图不会自动调整大小(默认值) |
-| UIViewAutoresizingFlexibleHeight | 视图的高度随着父视图高度的改变而改变。如果不包含此常量，则视图的高度不会改变。 |
-| UIViewAutoresizingFlexibleWidth | 视图的宽度随着父视图宽度的改变而改变。如果不包含此常量，则视图的宽度不会改变。 |
-| UIViewAutoresizingFlexibleLeftMargin | 视图左边缘到父视图左边缘的距离根据需要增大或减小。如果不包含此常量，则视图左边缘到父视图左边缘的距离会固定不变。  |
-| UIViewAutoresizingFlexibleRightMargin | 视图右边缘到父视图右边缘的距离根据需要增大或减小。如果不包含此常量，则视图右边缘到父视图右边缘的距离会固定不变。 |
-| UIViewAutoresizingFlexibleBottomMargin | 视图底部边缘到父视图底部边缘的距离根据需要增大或减小。如果不包含此常量，则视图底部边缘到父视图底部边缘的距离会固定不变。 |
-| UIViewAutoresizingFlexibleTopMargin | 视图顶部边缘到父视图顶部边缘的距离根据需要增大或减小。如果不包含此常量，则视图顶部边缘到父视图顶部边缘的距离会固定不变。 |
+| UIViewAutoresizingFlexibleHeight | 根据需要调整视图的高度，以保证上边距和下边距不变。 |
+| UIViewAutoresizingFlexibleWidth | 根据需要调整视图的宽度，以保证左边距和右边距不变。 |
+| UIViewAutoresizingFlexibleLeftMargin | 视图左边距根据需要增大或减小，以保证视图右边距不变。 |
+| UIViewAutoresizingFlexibleRightMargin | 视图右边距根据需要增大或减小，以保证视图左边距不变。 |
+| UIViewAutoresizingFlexibleBottomMargin | 视图下边距根据需要增大或减小，以保证视图上边距不变。 |
+| UIViewAutoresizingFlexibleTopMargin | 视图上边距根据需要增大或减小，以保证视图下边距不变。 |
 
 ![图3-1](https://developer.apple.com/library/content/documentation/WindowsViews/Conceptual/ViewPG_iPhoneOS/Art/uiview_autoresize.jpg)
 
