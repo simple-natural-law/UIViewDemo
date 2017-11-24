@@ -14,6 +14,7 @@
 		1AF42C171FBD385C00295882 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1AF42C151FBD385C00295882 /* LaunchScreen.storyboard */; };
 		1AF42C1A1FBD385C00295882 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AF42C191FBD385C00295882 /* main.m */; };
 		1AF42C231FC80DC500295882 /* AutoresizingMaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AF42C221FC80DC500295882 /* AutoresizingMaskViewController.m */; };
+		1AF42C261FC8142E00295882 /* RootNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AF42C251FC8142E00295882 /* RootNavigationController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,8 @@
 		1AF42C191FBD385C00295882 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1AF42C211FC80DC500295882 /* AutoresizingMaskViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AutoresizingMaskViewController.h; sourceTree = "<group>"; };
 		1AF42C221FC80DC500295882 /* AutoresizingMaskViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AutoresizingMaskViewController.m; sourceTree = "<group>"; };
+		1AF42C241FC8142E00295882 /* RootNavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RootNavigationController.h; sourceTree = "<group>"; };
+		1AF42C251FC8142E00295882 /* RootNavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RootNavigationController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +67,8 @@
 				1AF42C201FC80D6600295882 /* 自动调整视图尺寸 */,
 				1AF42C0A1FBD385C00295882 /* AppDelegate.h */,
 				1AF42C0B1FBD385C00295882 /* AppDelegate.m */,
+				1AF42C241FC8142E00295882 /* RootNavigationController.h */,
+				1AF42C251FC8142E00295882 /* RootNavigationController.m */,
 				1AF42C0D1FBD385C00295882 /* HomeViewController.h */,
 				1AF42C0E1FBD385C00295882 /* HomeViewController.m */,
 				1AF42C101FBD385C00295882 /* Main.storyboard */,
@@ -158,6 +163,7 @@
 				1AF42C231FC80DC500295882 /* AutoresizingMaskViewController.m in Sources */,
 				1AF42C0F1FBD385C00295882 /* HomeViewController.m in Sources */,
 				1AF42C1A1FBD385C00295882 /* main.m in Sources */,
+				1AF42C261FC8142E00295882 /* RootNavigationController.m in Sources */,
 				1AF42C0C1FBD385C00295882 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

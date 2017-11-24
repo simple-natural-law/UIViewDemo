@@ -1,26 +1,22 @@
 //
-//  AutoresizingMaskViewController.m
+//  RootNavigationController.m
 //  UIViewDemo
 //
 //  Created by 讯心科技 on 2017/11/24.
 //  Copyright © 2017年 讯心科技. All rights reserved.
 //
 
-#import "AutoresizingMaskViewController.h"
+#import "RootNavigationController.h"
 
-@interface AutoresizingMaskViewController ()
-
-@property (weak, nonatomic) IBOutlet UIView *targetView;
+@interface RootNavigationController ()
 
 @end
 
-@implementation AutoresizingMaskViewController
+@implementation RootNavigationController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
-    self.targetView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
 }
 
 
