@@ -26,7 +26,7 @@
     
     self.title = @"UIViewDemo";
     
-    self.dataArray = @[];
+    self.dataArray = @[@{@"title":@"自动布局", @"target":@""}];
 }
 
 #pragma mark- UITableViewDataSource
