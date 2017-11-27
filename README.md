@@ -270,10 +270,38 @@ secondView.alpha = 1.0;
 
 > **注意：虽然可以使用委托对象的委托方法在动画开始前或者停止后执行需要的操作，但通常情况下我们可以直接在执行动画块前或动画块执行后的位置运行需要执行的代码。**
 
+### 嵌套动画块
 
+可以通过在动画块内嵌套其他动画块来为动画块的某些部分分配不同的时序和配置选项。嵌套动画会与任何父动画同时启动，但根据它们各自的配置参数来执行。默认情况下，嵌套动画会继承父级动画的持续时间和动画曲线，但可以根据需要重置嵌套动画的这些选项。
+
+以下代码展示了一个如何使用嵌套动画块来改变动画组中的某些动画的开启时间，持续时间和行为的例子。有两个视图正在被淡化为完全透明，但其中一个视图的透明度会在动画结束前来回多次改变。在嵌套动画块中配置的`UIViewAnimationOptionOverrideInheritedCurve`和`UIViewAnimationOptionOverrideInheritedDuration`参数将允许嵌套动画使用自己的动画曲线和持续时间值。如果没有配置这些参数，嵌套动画将使用父级动画块的动画曲线和持续时间。
+
+```
+[UIView animateWithDuration:1.0 delay: 1.0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+
+    aView.alpha = 0.0;
+
+    // Create a nested animation that has a different
+    // duration, timing curve, and configuration.
+    [UIView animateWithDuration:0.2 delay:0.0 options:UIViewAnimationOptionOverrideInheritedCurve |
+    UIViewAnimationOptionCurveLinear |
+    UIViewAnimationOptionOverrideInheritedDuration |
+    UIViewAnimationOptionRepeat |
+    UIViewAnimationOptionAutoreverse
+    animations:^{
+
+        [UIView setAnimationRepeatCount:2.5];
+        
+        anotherView.alpha = 0.0;
+    }
+    completion:nil];
+}
+completion:nil];
+```
+如果是使用Begin/Commit方法创建动画，其嵌套使用与基于Block的方法类似。在已经创建的动画块中调用`beginAnimations:context:`方法继续创建一个新的动画块，并根据需要进行配置。任何配置更改都适用于最新创建的动画块。在提交和执行动画前，所有嵌套动画块都必须调用`commitAnimations`方法。
 
 ## 其他
 
-对应用程序的用户界面的操作必须在主线程上执行，也就是说必须在主线程中执行`UIView`类的方法。创建视图对象不一定要放在主线程，但其他所有操作都应该在主线程上进行。
+对应用程序用户界面的操作必须在主线程上执行，也就是说必须在主线程中执行`UIView`类的方法。创建视图对象不一定要放在主线程，但其他所有操作都应该在主线程上进行。
 
 自定义打印输出视图信息，可以实现`drawRect:forViewPrintFormatter:`方法。有关如何支持打印输出视图的详细信息，可以参看[Drawing and Printing Guide for iOS](https://developer.apple.com/library/content/documentation/2DDrawing/Conceptual/DrawingPrintingiOS/Introduction/Introduction.html#//apple_ref/doc/uid/TP40010156)。
