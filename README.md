@@ -187,7 +187,7 @@ self.view.transform = xform;
 
 ## 动画
 
-视图的`frame`、`bounds`、`center`、`transform`、`alpha`和`backgroundColor`属性是可以动画更改的。
+视图的`frame`、`bounds`、`center`、`transform`、`alpha`和`backgroundColor`属性是可以用来执行动画。
 
 ### 使用基于Block的方法执行动画
 
@@ -195,6 +195,7 @@ iOS 4 以后，可以使用使用基于Block的方法来执行动画。有以下
 - `animateWithDuration:animations:`
 - `animateWithDuration:animations:completion:`
 - `animateWithDuration:delay:options:animations:completion`
+
 这些方法都是类方法，使用它们创建的动画块不会绑定到单个视图。因此，可以使用这些方法创建一个包含对多个视图进行更改的动画。例如，在某个时间段淡入淡出执行视图显示和隐藏动画。其代码如下：
 ```
 [UIView animateWithDuration:1.0 animations:^{
