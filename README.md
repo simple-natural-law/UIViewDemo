@@ -246,6 +246,13 @@ secondView.alpha = 1.0;
 
 > **注意：当正在对视图的某个属性执行动画时，此时更改该属性值不会停止当前动画。相反，当前动画会继续执行，并动画到刚分配给该属性的新值。**
 
+可以使用以下类方法为Begin/Commit动画块配置动画参数：
+- `setAnimationStartDate:`：设置开始执行动画的时间。如果设置的日期是过去时间，则会立即执行动画。
+- `setAnimationDelay:`：设置当前时间延迟多少秒后开始执行动画。
+- `setAnimationDuration:`：设置动画时长。
+- `setAnimationCurve:`：设置动画时使用的时间曲线的类型。
+- `setAnimationRepeatCount:`：设置动画重复次数。
+- `setAnimationRepeatAutoreverses:`：设置动画完成后是否自动反转。
 
 
 ## 其他
