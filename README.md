@@ -178,7 +178,7 @@ self.view.transform = xform;
 
 **注意：如果使用OpenGL ES来执行绘图，则应使用`GLKView`类，有关如何使用OpenGL ES进行绘制的更多信息，可以参看[OpenGL ES Programming Guide](https://developer.apple.com/library/content/documentation/3DDrawing/Conceptual/OpenGLES_ProgrammingGuide/Introduction/Introduction.html#//apple_ref/doc/uid/TP40008793)。**
 
-## 动画
+## 动画更改视图的属性
 
 视图的`frame`、`bounds`、`center`、`transform`、`alpha`和`backgroundColor`属性是可以用来执行动画。
 
@@ -298,7 +298,17 @@ secondView.alpha = 1.0;
 }
 completion:nil];
 ```
-如果是使用Begin/Commit方法创建动画，其嵌套使用与基于Block的方法类似。在已经创建的动画块中调用`beginAnimations:context:`方法继续创建一个新的动画块，并根据需要进行配置。任何配置更改都适用于最新创建的动画块。在提交和执行动画前，所有嵌套动画块都必须调用`commitAnimations`方法。
+如果是使用Begin/Commit方法创建动画，其嵌套使用与基于Block的方法类似。在已经创建的动画块中调用`beginAnimations:context:`方法继续创建一个新的动画块，并根据需要进行配置。任何配置更改都适用于最新创建的动画块。在提交和执行动画前，所有嵌套动画块都必须调用`commitAnimations`方法提交动画。
+
+### 反转动画
+
+创建可重复执行的可反转动画师，要注意将重复次数指定为非整数值。对于可反转动画，每个动画周期内都包含从原始值到新值，然后再还原为原始值的动画。如果希望动画在新值上结束，则重复执行次数要加0.5以增加半个额外动画周期。
+
+
+## 视图之间的动画切换
+
+
+
 
 ## 其他
 
