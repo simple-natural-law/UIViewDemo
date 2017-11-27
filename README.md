@@ -254,6 +254,23 @@ secondView.alpha = 1.0;
 - `setAnimationRepeatCount:`：设置动画重复次数。
 - `setAnimationRepeatAutoreverses:`：设置动画完成后是否自动反转。
 
+如果想要在动画开始前或完成后执行某些操作，则必须将委托对象和操作方法与动画块关联起来。使用`UIView`类的`setAnimationDelegate:`类方法设置委托对象，并使用`setAnimationWillStartSelector:`和`setAnimationDidStopSelector:`类方法来设置动画开始前和完成后要执行的方法。系统会在适当的时候调用委托方法，让我们有机会执行需要执行的代码。
+
+动画委托方法的方法名类似于一下：
+```
+- (void)animationWillStart:(NSString *)animationID context:(void *)context;
+
+- (void)animationDidStop:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context;
+```
+这两个方法的`animationID`和`context`参数与调用`beginAnimations:context:`方法开启动画时传入的参数相同：
+- `animationID`——用于识别动画的字符串。
+- `context`——使用该上下文对象传递信息给委托对象。
+
+调用`setAnimationDidStopSelector:`类方法关联的动画停止时执行的方法有一个额外的`finished`参数，其是一个布尔值。如果动画运行完成，为`YES`。如果动画被其他动画提前取消或停止，则为`NO`。
+
+> **注意：虽然可以使用委托对象的委托方法在动画开始前或者停止后执行需要的操作，但通常情况下我们可以直接在执行动画块前或动画块执行后的位置运行需要执行的代码。**
+
+
 
 ## 其他
 
