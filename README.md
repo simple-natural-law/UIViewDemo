@@ -5,7 +5,6 @@
 视图是应用程序中用户界面的基本组成部分，`UIView`类定义了所有视图的通用行为。视图在其边界矩形内呈现内容，并处理与该内容有关的任何交互。`UIView`类是一个具体类，可以使用其实例对象来显示一个固定的背景颜色，也可以子类化`UIView`来绘制更复杂的内容。要展示应用程序中常见的标签、图像、 按钮 和其它界面元素，应首先选择使用UIKit框架提供的视图子类。
 
 视图对象是应用程序与用户交互的主要方式，其主要职责有：
-
 - 绘制图形和执行动画
     - 使用UIKit框架或者Core Graphics框架在视图的矩形区域中绘制内容。
     - 视图的一些属性值可以用来执行动画。
@@ -26,7 +25,6 @@
 ### 添加和移除视图
 
 Interface Builder是创建视图层次结构最便捷的方式，因为我们可以使用图形方式来组装视图，查看视图之间的关系，并确切了解在运行时将如何显示这些视图。如果以编程方式创建视图，可以使用以下方法来排列视图层次结构：
-
 - 要将子视图添加到父视图，请调用父视图的`addSubview:`方法，此方法将子视图添加到父级子视图层的最上层。
 - 要在父视图和子视图中间插入子视图，请调用父视图的任一`insertSubview:...`方法，此方法会将子视图插入到父视图和给定子视图之间的视图层的最上层。
 - 要对父视图中的现有子视图进行重新排列，请调用父视图的`bringSubviewToFront:`、`sendSubviewToBack:`或者`exchangeSubviewAtIndex:withSubviewAtIndex:`方法，使用这些方法比删除子视图并重新插入它们效率要快。
@@ -45,7 +43,6 @@ Interface Builder是创建视图层次结构最便捷的方式，因为我们可
 ### 在视图层中定位视图
 
 在视图层中定位视图有2种方法：
-
 - 在适当位置存储视图对象的指针，例如在拥有此视图的视图控制器中。
 - 为每个视图的`tag`属性分配一个**唯一的整数**，并调用其父视图或者其父视图的更下层父视图的`viewWithTag:`方法来定位它。
 
@@ -64,7 +61,6 @@ self.view.transform = xform;
 ### 坐标转换
 
 在某些情况下，特别是在处理触摸事件时，应用程序可能需要将视图的坐标参考系从一个视图转移到另一个视图。例如触摸事件会报告每次触摸在`window`坐标系中位置，但通常我们只需要视图在其所在视图层分支中的视图坐标系中的位置。`UIView`类定义了以下转换视图坐标参考系的方法：
-
 - `convertPoint:fromView:`
 - `convertRect:fromView:`
 - `convertPoint:toView:`
@@ -73,7 +69,6 @@ self.view.transform = xform;
 `convert...:fromView:`方法将坐标点的坐标参考系从给定视图的坐标系转换为调用此方法的视图的局部坐标系，而`convert...:toView:`则将坐标点的坐标参考系从调用此方法的视图的局部坐标系转换为给定视图的坐标系。如果这两类方法的给定参考视图为`nil`，则会自动指定参考视图为当前视图所在的`window`。
 
 `UIWindow`也定义了几种转换坐标参考系的方法：
-
 - `convertPoint:fromWindow:`
 - `convertRect:fromWindow:`
 - `convertPoint:toWindow:`
@@ -90,7 +85,6 @@ self.view.transform = xform;
 ### 布局更改
 
 视图发生以下任何更改时，可能会使视图的布局发生更改：
-
 - 视图边界矩形的大小发生变化。
 - 屏幕方向的变换，通常会使根视图的边界矩形发生更改。
 - 与视图的图层相关联的核心动画子图层组发生更改，并且需要布局。
@@ -118,7 +112,6 @@ self.view.transform = xform;
 ### 手动调整视图布局
 
 当视图的大小更改时，UIKit就会应用其子视图的自动调整行为，之后会调用视图的`layoutSubviews`方法。当自定义视图的子视图的自动调整行为不能满足我们的需要时，可以实现该自定义视图的`layoutSubviews`方法并在其中执行以下任何操作：
-
 - 调整任何子视图的大小和位置。
 - 添加或删除子视图或者核心动画图层。
 - 通过调用子视图的`setNeedsDisplay`或者`setNeedsDisplayInRect:`方法强制其执行重绘。
@@ -204,7 +197,7 @@ iOS 4 以后，可以使用使用基于Block的方法来执行动画。有以下
     secondView.alpha = 1.0;
 }];
 ```
-程序执行以上代码时，会在另一个线程`异步`启动指定的动画，以避免阻塞当前线程或应用程序的主线程。
+程序执行以上代码时，会在另一个线程执行指定的动画，以避免阻塞当前线程或应用程序的主线程。
 
 如果要更改默认的动画参数，则必须使用`animateWithDuration:delay:options:animations:completion`方法来执行动画。可以通过该方法来自定义以下动画参数：
 - 延迟开始执行的动画的时间
@@ -235,6 +228,23 @@ iOS 4 以后，可以使用使用基于Block的方法来执行动画。有以下
 
 ### 使用Begin/Commit方法执行动画
 
+iOS 4 之前，只能使用`UIView`类的`beginAnimations:context:`和`commitAnimations`类方法来定义动画块，这两个方法用来标记动画块的开始和结束。在调用`commitAnimations`方法之后，在这两个方法之间更改的任何动画属性都会动画过渡到其新值。动画会在辅助线程上执行，以避免阻塞当前线程或应用程序的主线程。
+
+使用Begin/Commit方法在某个时间段淡入淡出执行视图显示和隐藏动画。其代码如下：
+```
+[UIView beginAnimations:@"ToggleViews" context:nil];
+[UIView setAnimationDuration:1.0];
+
+// Make the animatable changes.
+firstView.alpha = 0.0;
+secondView.alpha = 1.0;
+
+// Commit the changes and perform the animation.
+[UIView commitAnimations];
+```
+默认情况下，在动画块中的所有动画属性更改都是动画过渡的。如果想让某些属性更改不支持动画过渡，可以先调用`setAnimationsEnabled:`来临时禁用动画，然后执行不需要动画过渡的更改。之后，再次调用`setAnimationsEnabled:`方法重新启用动画。可以通过调用`areAnimationsEnabled`类方法来判断动画是否被启用。
+
+> **注意：当正在对视图的某个属性执行动画时，此时更改该属性值不会停止当前动画。相反，当前动画会继续执行，并动画到刚分配给该属性的新值。**
 
 
 
