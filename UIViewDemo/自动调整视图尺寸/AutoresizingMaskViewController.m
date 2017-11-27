@@ -22,6 +22,7 @@
     
     // 自动调整宽度，以保证左边距和右边距不变
     self.target.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin;
+    
 }
 
 

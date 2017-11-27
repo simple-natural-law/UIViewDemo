@@ -189,6 +189,54 @@ self.view.transform = xform;
 
 视图的`frame`、`bounds`、`center`、`transform`、`alpha`和`backgroundColor`属性是可以动画更改的。
 
+### 使用基于Block的方法执行动画
+
+iOS 4 以后，可以使用使用基于Block的方法来执行动画。有以下几种基于Block的方法为动画块提供不同级别的配置：
+- `animateWithDuration:animations:`
+- `animateWithDuration:animations:completion:`
+- `animateWithDuration:delay:options:animations:completion`
+这些方法都是类方法，使用它们创建的动画块不会绑定到单个视图。因此，可以使用这些方法创建一个包含对多个视图进行更改的动画。例如，在某个时间段淡入淡出执行视图显示和隐藏动画。其代码如下：
+```
+[UIView animateWithDuration:1.0 animations:^{
+
+    firstView.alpha = 0.0;
+    secondView.alpha = 1.0;
+}];
+```
+程序执行以上代码时，会在另一个线程`异步`启动指定的动画，以避免阻塞当前线程或应用程序的主线程。
+
+如果要更改默认的动画参数，则必须使用`animateWithDuration:delay:options:animations:completion`方法来执行动画。可以通过该方法来自定义以下动画参数：
+- 延迟开始执行的动画的时间
+- 动画时使用的时间曲线的类型
+- 动画重复执行的次数
+- 当动画执行到最后时，动画是否自动反转
+- 在动画执行过程中，视图是否能接收触摸事件
+- 动画是否应该中断任何正在执行的动画，或者等到正在执行的动画完成之后才开始
+
+另外，`animateWithDuration:animations:completion:`和`animateWithDuration:delay:options:animations:completion`方法可以指定动画完成后的执行代码块，可以在块中将单独的动画链接起来。例如，第一次调用`animateWithDuration:delay:options:animations:completion`方法设置一个淡出动画，并配置一些动画参数。当动画完成后，在动画完成后的执行代码块中延迟执行淡入动画。其代码如下：
+```
+// Fade out the view right away
+[UIView animateWithDuration:1.0 delay: 0.0 options:UIViewAnimationOptionCurveEaseIn animations:^{
+
+    thirdView.alpha = 0.0;
+
+}completion:^(BOOL finished){
+
+    // Wait one second and then fade in the view
+    [UIView animateWithDuration:1.0 delay: 1.0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+
+        thirdView.alpha = 1.0;
+
+    }completion:nil];
+}];
+```
+> **重要：**当正在对视图的某个属性执行动画时，此时更改该属性值不会停止当前动画。相反，当前动画会继续执行，并动画到刚分配给该属性的新值。
+
+### 使用Begin/Commit方法执行动画
+
+
+
+
 ## 其他
 
 对应用程序的用户界面的操作必须在主线程上执行，也就是说必须在主线程中执行`UIView`类的方法。创建视图对象不一定要放在主线程，但其他所有操作都应该在主线程上进行。
