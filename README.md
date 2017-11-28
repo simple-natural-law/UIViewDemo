@@ -335,7 +335,7 @@ completion:nil];
     [UIView transitionWithView:self.view
                       duration:1.0
                        options:UIViewAnimationOptionTransitionCurlUp
-                    animations:^{
+    animations:^{
 
         currentTextView.hidden = YES;
         swapTextView.hidden = NO;
@@ -399,7 +399,7 @@ iOS 4之后，使用`transitionFromView:toView:duration:options:completion:`方�
 [UIView animateWithDuration:1.0
                       delay:0.0
                     options:UIViewAnimationOptionCurveLinear
-                 animations:^{
+animations:^{
                  
     // Animate the first half of the view rotation.
     CGAffineTransform  xform = CGAffineTransformMakeRotation(DEGREES_TO_RADIANS(-180));
@@ -422,7 +422,7 @@ iOS 4之后，使用`transitionFromView:toView:duration:options:completion:`方�
     [UIView animateWithDuration:1.0
                           delay:0.0
                         options:UIViewAnimationOptionCurveLinear
-                     animations:^{
+    animations:^{
                      
         CGAffineTransform  xform = CGAffineTransformMakeRotation(DEGREES_TO_RADIANS(-359));
         backingView.transform = xform;
@@ -433,6 +433,8 @@ iOS 4之后，使用`transitionFromView:toView:duration:options:completion:`方�
     }];
 }];
 ```
+> **注意：也可以在基于视图的动画块之外创建并应用`CABasicAnimation`对象，以获得相同的结果。所有的动画最终都依靠Core Animation来执行。因此，如果动画几乎被同时提交，它们就会一起执行。**
+
 
 ## 其他
 
