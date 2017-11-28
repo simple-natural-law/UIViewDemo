@@ -305,9 +305,9 @@ completion:nil];
 创建可重复执行的可反转动画时，要注意将重复次数指定为非整数值。对于可反转动画，每个动画周期内都包含从原始值到新值，然后再还原为原始值的动画。如果希望动画在新值上结束，则重复执行次数要加0.5以增加半个额外动画周期。
 
 
-## 视图的动画转换
+## 视图过渡转换动画
 
-视图转换可以隐藏在视图层中添加、删除或显示视图带来的视觉上的突然变化。可以使用视图转换来实现以下类型的更改：
+视图过渡转换可以隐藏在视图层中添加、删除或显示视图带来的视觉上的突然变化。可以使用视图过渡转换来实现以下类型的更改：
 - 更改现有视图的可见子视图，可以通过添加或删除子视图使父视图在两种不同状态之间切换。
 - 用不同的视图替换视图层中的某个视图。
 
@@ -316,6 +316,29 @@ completion:nil];
 ### 更改视图的子视图
 
 在iOS 4之后，使用`transitionWithView:duration:options:animations:completion:`方法为视图启动过渡动画。通常情况下，在此方法指定的动画块中，应执行与显示、隐藏、添加或者删除子视图相关的动画。这样就能允许视图对象创建视图在更改之前和更改之后的截图，并且会在这两张截图之间创建动画。这种方式更加高效，但是，如果还需要对其他更改执行动画，则可以在调用此方法时配置`UIViewAnimationOptionAllowAnimatedContent`选项，这样就可以防止视图对象创建截图，并直接对所有更改执行动画。
+
+以下代码是如何使用过渡转换动画使用户界面看起来好像添加了新的文本输入页面的示例。用户界面包含两个嵌入的文本视图，文本视图的配置相同，但其中一个始终可见，另一个隐藏。当永华点击按钮创建一个新页面时，这个方法切换了两个视图的可见性，导致一个空的文本视图的新空白页面准备接收文本。转换完成后，视图使用私有方法保存旧页面中的文本，并重置现在隐藏的文本视图，以便稍后重新使用。
+```
+- (IBAction)displayNewPage:(id)sender
+{
+    [UIView transitionWithView:self.view
+    duration:1.0
+    options:UIViewAnimationOptionTransitionCurlUp
+    animations:^{
+
+        currentTextView.hidden = YES;
+        swapTextView.hidden = NO;
+    }completion:^(BOOL finished){
+
+        // Save the old text and then swap the views.
+        [self saveNotes:temp];
+
+        UIView*    temp = currentTextView;
+        currentTextView = swapTextView;
+        swapTextView = temp;
+    }];
+}
+```
 
 
 ## 其他
