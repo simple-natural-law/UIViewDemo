@@ -319,8 +319,8 @@ completion:nil];
 ## 视图过渡转换动画
 
 视图过渡转换可以隐藏在视图层中添加、删除或显示视图带来的视觉上的突然变化。可以使用视图过渡转换来实现以下类型的更改：
-- 更改现有视图的可见子视图，可以通过添加或删除子视图使父视图在两种不同状态之间切换。
-- 用不同的视图替换视图层中的某个视图。
+- 更改现有视图的可见子视图，使父视图在不同状态之间切换。
+- 当想使界面有很大的改变时，使用不同的视图替换视图层中的某个视图。
 
 > **注意：不要将视图转换与视图控制器的跳转相混淆，视图转换仅影响视图层。**
 
@@ -351,7 +351,41 @@ completion:nil];
     }];
 }
 ```
+iOS 4之前的版本可以使用`setAnimationTransition:forView:cache:`方法执行视图转换动画，代码如下：
+```
+[UIView beginAnimations:@"ToggleSiblings" context:nil];
+[UIView setAnimationTransition:UIViewAnimationTransitionCurlUp forView:self.view cache:YES];
+[UIView setAnimationDuration:1.0];
 
+// Make your changes
+
+
+[UIView commitAnimations];
+```
+另外，还需要设置好委托对象和动画停止后执行的回调方法。
+
+### 用不同的视图替换视图层中的某个视图
+
+iOS 4之后，使用`transitionFromView:toView:duration:options:completion:`方法在两个视图间过渡转换。此方法实际上是从当前视图层中删除第一个视图，然后插入另一个视图。如果要隐藏视图而不是从视图层中删除视图，可以在调用此方法时配置`UIViewAnimationOptionShowHideTransitionViews`选项。
+
+以下代码展示了如何在单个视图控制器管理的两个主视图之间交换显示。视图控制器的根视图总是显示两个子视图中的一个，每个视图呈现的内容相同，但界面布局不同。视图控制器使用`displayingPrimary`成员变量(布尔值)来跟踪在任何给定时间显示哪个视图。翻转方向根据正在显示的视图而改变。
+```
+- (IBAction)toggleMainViews:(id)sender {
+
+    [UIView transitionFromView:(displayingPrimary ? primaryView : secondaryView)
+                        toView:(displayingPrimary ? secondaryView : primaryView)
+                      duration:1.0
+                       options:(displayingPrimary UIViewAnimationOptionTransitionFlipFromRight :
+                       UIViewAnimationOptionTransitionFlipFromLeft)
+                    completion:^(BOOL finished) {
+                    
+        if (finished)
+        {
+            displayingPrimary = !displayingPrimary;
+        }
+    }];
+}
+```
 
 ## 其他
 
