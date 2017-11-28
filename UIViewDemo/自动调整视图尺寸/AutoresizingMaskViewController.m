@@ -10,7 +10,11 @@
 
 @interface AutoresizingMaskViewController ()
 
-@property (weak, nonatomic) IBOutlet UILabel *target;
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+
+@property (weak, nonatomic) IBOutlet UIView *viewA;
+
+@property (weak, nonatomic) IBOutlet UIView *viewB;
 
 @end
 
@@ -20,8 +24,12 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    // 自动调整宽度，以保证左边距和右边距不变
-    self.target.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin;
+    self.titleLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin;
+    
+    // 自动调整宽度，以保证左边距和右边距不变，同时自动调整下边距，以保证上边距不变。
+    self.viewA.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleBottomMargin;
+    
+    self.viewB.autoresizingMask = UIViewAutoresizingFlexibleWidth |UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleTopMargin;
 }
 
 
