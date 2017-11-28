@@ -143,5 +143,33 @@
             </objects>
             <point key="canvasLocation" x="1677.5999999999999" y="67.916041979010501"/>
         </scene>
+        <!--基于Block的动画-->
+        <scene sceneID="5dN-68-laW">
+            <objects>
+                <viewController storyboardIdentifier="AnimationUseBlockViewController" title="基于Block的动画" id="f1s-16-dwG" customClass="AnimationUseBlockViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Hup-yW-RZD"/>
+                        <viewControllerLayoutGuide type="bottom" id="yym-kI-kkr"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="HG4-BS-IFN">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AmU-bJ-YcU">
+                                <rect key="frame" x="99" y="221" width="176" height="158"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                    <connections>
+                        <outlet property="targetView" destination="AmU-bJ-YcU" id="wtX-Va-qZJ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AnN-zE-aSf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2672.8000000000002" y="65.217391304347828"/>
+        </scene>
     </scenes>
 </document>
