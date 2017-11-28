@@ -118,5 +118,30 @@
             </objects>
             <point key="canvasLocation" x="684" y="73.313343328335833"/>
         </scene>
+        <!--绘制自定义图形-->
+        <scene sceneID="mzX-O2-0gP">
+            <objects>
+                <viewController storyboardIdentifier="DrawPathViewController" title="绘制自定义图形" id="iej-x9-smx" customClass="DrawPathViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="vkM-Dw-pnD"/>
+                        <viewControllerLayoutGuide type="bottom" id="eAz-fz-xUF"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="VOn-OO-0av">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9ZL-Mj-okm" customClass="CustomView">
+                                <rect key="frame" x="29" y="185" width="311" height="199"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0gW-O0-Hjw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1677.5999999999999" y="67.916041979010501"/>
+        </scene>
     </scenes>
 </document>

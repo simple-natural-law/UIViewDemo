@@ -26,7 +26,8 @@
     
     self.title = @"UIViewDemo";
     
-    self.dataArray = @[@{@"title":@"自动布局", @"target":@"AutoresizingMaskViewController"}];
+    self.dataArray = @[@{@"title":@"自动调整视图尺寸", @"target":@"AutoresizingMaskViewController"},
+                       @{@"title":@"绘制自定义图形",@"target":@"DrawPathViewController"}];
 }
 
 #pragma mark- UITableViewDataSource
@@ -54,7 +55,7 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    UIViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"AutoresizingMaskViewController"];
+    UIViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:self.dataArray[indexPath.row][@"target"]];
     
     [self.navigationController pushViewController:vc animated:YES];
 }

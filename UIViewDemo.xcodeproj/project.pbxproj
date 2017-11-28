@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1AE841541FCD5C9C0050E383 /* CustomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AE841531FCD5C9C0050E383 /* CustomView.m */; };
+		1AE841571FCD60BF0050E383 /* DrawPathViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AE841561FCD60BF0050E383 /* DrawPathViewController.m */; };
 		1AF42C0C1FBD385C00295882 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AF42C0B1FBD385C00295882 /* AppDelegate.m */; };
 		1AF42C0F1FBD385C00295882 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AF42C0E1FBD385C00295882 /* HomeViewController.m */; };
 		1AF42C121FBD385C00295882 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1AF42C101FBD385C00295882 /* Main.storyboard */; };
@@ -18,6 +20,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1AE841521FCD5C9C0050E383 /* CustomView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomView.h; sourceTree = "<group>"; };
+		1AE841531FCD5C9C0050E383 /* CustomView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomView.m; sourceTree = "<group>"; };
+		1AE841551FCD60BF0050E383 /* DrawPathViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DrawPathViewController.h; sourceTree = "<group>"; };
+		1AE841561FCD60BF0050E383 /* DrawPathViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DrawPathViewController.m; sourceTree = "<group>"; };
 		1AF42C071FBD385C00295882 /* UIViewDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UIViewDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1AF42C0A1FBD385C00295882 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		1AF42C0B1FBD385C00295882 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -45,6 +51,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1AE841511FCD5BE50050E383 /* 绘制自定义图形 */ = {
+			isa = PBXGroup;
+			children = (
+				1AE841521FCD5C9C0050E383 /* CustomView.h */,
+				1AE841531FCD5C9C0050E383 /* CustomView.m */,
+				1AE841551FCD60BF0050E383 /* DrawPathViewController.h */,
+				1AE841561FCD60BF0050E383 /* DrawPathViewController.m */,
+			);
+			path = "绘制自定义图形";
+			sourceTree = "<group>";
+		};
 		1AF42BFE1FBD385C00295882 = {
 			isa = PBXGroup;
 			children = (
@@ -64,6 +81,7 @@
 		1AF42C091FBD385C00295882 /* UIViewDemo */ = {
 			isa = PBXGroup;
 			children = (
+				1AE841511FCD5BE50050E383 /* 绘制自定义图形 */,
 				1AF42C201FC80D6600295882 /* 自动调整视图尺寸 */,
 				1AF42C0A1FBD385C00295882 /* AppDelegate.h */,
 				1AF42C0B1FBD385C00295882 /* AppDelegate.m */,
@@ -160,11 +178,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1AE841571FCD60BF0050E383 /* DrawPathViewController.m in Sources */,
 				1AF42C231FC80DC500295882 /* AutoresizingMaskViewController.m in Sources */,
 				1AF42C0F1FBD385C00295882 /* HomeViewController.m in Sources */,
 				1AF42C1A1FBD385C00295882 /* main.m in Sources */,
 				1AF42C261FC8142E00295882 /* RootNavigationController.m in Sources */,
 				1AF42C0C1FBD385C00295882 /* AppDelegate.m in Sources */,
+				1AE841541FCD5C9C0050E383 /* CustomView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
