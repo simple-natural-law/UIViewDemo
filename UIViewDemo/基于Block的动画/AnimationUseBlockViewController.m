@@ -10,7 +10,7 @@
 
 @interface AnimationUseBlockViewController ()
 
-@property (weak, nonatomic) IBOutlet UIView *targetView;
+@property (weak, nonatomic) IBOutlet UILabel *targetView;
 
 @end
 
