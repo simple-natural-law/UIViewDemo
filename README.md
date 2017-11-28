@@ -210,7 +210,8 @@ iOS 4 以后，可以使用使用基于Block的方法来执行动画。有以下
 另外，`animateWithDuration:animations:completion:`和`animateWithDuration:delay:options:animations:completion`方法可以指定动画完成后的执行代码块，可以在块中将单独的动画链接起来。例如，第一次调用`animateWithDuration:delay:options:animations:completion`方法设置一个淡出动画，并配置一些动画参数。当动画完成后，在动画完成后的执行代码块中延迟执行淡入动画。其代码如下：
 ```
 // Fade out the view right away
-[UIView animateWithDuration:1.0 delay: 0.0
+[UIView animateWithDuration:1.0
+                      delay:0.0
                     options:UIViewAnimationOptionCurveEaseIn
                  animations:^{
 
@@ -219,7 +220,8 @@ iOS 4 以后，可以使用使用基于Block的方法来执行动画。有以下
 }completion:^(BOOL finished){
 
     // Wait one second and then fade in the view
-    [UIView animateWithDuration:1.0 delay: 1.0
+    [UIView animateWithDuration:1.0
+                          delay:1.0
                         options:UIViewAnimationOptionCurveEaseOut
                      animations:^{
 
@@ -281,7 +283,8 @@ secondView.alpha = 1.0;
 以下代码展示了一个如何使用嵌套动画块来改变动画组中的某些动画的开启时间，持续时间和行为的例子。有两个视图正在被淡化为完全透明，但其中一个视图的透明度会在动画结束前来回多次改变。在嵌套动画块中配置的`UIViewAnimationOptionOverrideInheritedCurve`和`UIViewAnimationOptionOverrideInheritedDuration`参数将允许嵌套动画使用自己的动画曲线和持续时间值。如果没有配置这些参数，嵌套动画将使用父级动画块的动画曲线和持续时间。
 
 ```
-[UIView animateWithDuration:1.0 delay: 1.0
+[UIView animateWithDuration:1.0
+                      delay:1.0
                     options:UIViewAnimationOptionCurveEaseOut
                  animations:^{
 
@@ -289,7 +292,8 @@ secondView.alpha = 1.0;
 
     // Create a nested animation that has a different
     // duration, timing curve, and configuration.
-    [UIView animateWithDuration:0.2 delay:0.0
+    [UIView animateWithDuration:0.2
+                          delay:0.0
                         options:UIViewAnimationOptionOverrideInheritedCurve |
                                 UIViewAnimationOptionCurveLinear |
                                 UIViewAnimationOptionOverrideInheritedDuration |
