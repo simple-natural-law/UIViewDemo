@@ -386,6 +386,9 @@ iOS 4之后，使用`transitionFromView:toView:duration:options:completion:`方�
     }];
 }
 ```
+> **注意：除了交换视图之外，还需要在视图控制器中执行代码来管理主视图和辅助视图的加载和卸载。有关如何通过视图控制器加载和卸载视图的信息，可以参看[View Controller Programming Guide for iOS](https://developer.apple.com/library/content/featuredarticles/ViewControllerPGforiPhoneOS/index.html#//apple_ref/doc/uid/TP40007457)。**
+
+## 
 
 ## 其他
 
