@@ -213,7 +213,7 @@ iOS 4 以后，可以使用使用基于Block的方法来执行动画。有以下
 [UIView animateWithDuration:1.0
                       delay:0.0
                     options:UIViewAnimationOptionCurveEaseIn
-                 animations:^{
+animations:^{
 
     thirdView.alpha = 0.0;
 
@@ -223,7 +223,7 @@ iOS 4 以后，可以使用使用基于Block的方法来执行动画。有以下
     [UIView animateWithDuration:1.0
                           delay:1.0
                         options:UIViewAnimationOptionCurveEaseOut
-                     animations:^{
+    animations:^{
 
         thirdView.alpha = 1.0;
 
@@ -299,7 +299,7 @@ secondView.alpha = 1.0;
                                 UIViewAnimationOptionOverrideInheritedDuration |
                                 UIViewAnimationOptionRepeat |
                                 UIViewAnimationOptionAutoreverse
-                     animations:^{
+    animations:^{
 
         [UIView setAnimationRepeatCount:2.5];
         
@@ -377,7 +377,7 @@ iOS 4之后，使用`transitionFromView:toView:duration:options:completion:`方�
                       duration:1.0
                        options:(displayingPrimary UIViewAnimationOptionTransitionFlipFromRight :
                        UIViewAnimationOptionTransitionFlipFromLeft)
-                    completion:^(BOOL finished) {
+    completion:^(BOOL finished) {
                     
         if (finished)
         {
@@ -388,10 +388,58 @@ iOS 4之后，使用`transitionFromView:toView:duration:options:completion:`方�
 ```
 > **注意：除了交换视图之外，还需要在视图控制器中执行代码来管理主视图和辅助视图的加载和卸载。有关如何通过视图控制器加载和卸载视图的信息，可以参看[View Controller Programming Guide for iOS](https://developer.apple.com/library/content/featuredarticles/ViewControllerPGforiPhoneOS/index.html#//apple_ref/doc/uid/TP40007457)。**
 
-## 
+## 视图和视图的图层一起动画更改
+
+应用程序可以根据需要自由地混合基于视图和基于图层的动画代码，但配置动画参数的过程取决于谁拥有图层。更改视图拥有的图层与更改视图本身相同，并且应用于图层属性的任何动画都根据当前基于视图的动画块的动画参数来执行。自定义图层对象会忽略基于视图的动画块参数，而是使用默认的Core Animation参数。
+
+如果要为所创建的图层自定义动画参数，则必须直接使用Core Animation。通常，使用Core Animation动画化图层需要创建一个`CABasicAnimation`对象或者`CAAnimation`的其他子类对象，然后将该动画对象添加到相应的图层。
+
+以下代码实现了一个动画，其同时修改一个视图和一个自定义图层。视图在其边界的中心包含一个自定义`CALayer`对象。动画顺时针旋转视图，同时逆时针旋转图层。由于旋转方向相反，图层相对于屏幕保持其原始角度，看上去并没有旋转。
+```
+[UIView animateWithDuration:1.0
+                      delay:0.0
+                    options:UIViewAnimationOptionCurveLinear
+                 animations:^{
+                 
+    // Animate the first half of the view rotation.
+    CGAffineTransform  xform = CGAffineTransformMakeRotation(DEGREES_TO_RADIANS(-180));
+    backingView.transform = xform;
+
+    // Rotate the embedded CALayer in the opposite direction.
+    CABasicAnimation*    layerAnimation = [CABasicAnimation animationWithKeyPath:@"transform"];
+    layerAnimation.duration = 2.0;
+    layerAnimation.beginTime = 0; //CACurrentMediaTime() + 1;
+    layerAnimation.valueFunction = [CAValueFunction functionWithName:kCAValueFunctionRotateZ];
+    layerAnimation.timingFunction = [CAMediaTimingFunction
+    functionWithName:kCAMediaTimingFunctionLinear];
+    layerAnimation.fromValue = [NSNumber numberWithFloat:0.0];
+    layerAnimation.toValue = [NSNumber numberWithFloat:DEGREES_TO_RADIANS(360.0)];
+    layerAnimation.byValue = [NSNumber numberWithFloat:DEGREES_TO_RADIANS(180.0)];
+    [manLayer addAnimation:layerAnimation forKey:@"layerAnimation"];
+    
+}completion:^(BOOL finished){
+    // Now do the second half of the view rotation.
+    [UIView animateWithDuration:1.0
+                          delay:0.0
+                        options:UIViewAnimationOptionCurveLinear
+                     animations:^{
+                     
+        CGAffineTransform  xform = CGAffineTransformMakeRotation(DEGREES_TO_RADIANS(-359));
+        backingView.transform = xform;
+                     
+    }completion:^(BOOL finished){
+
+        backingView.transform = CGAffineTransformIdentity;
+    }];
+}];
+```
 
 ## 其他
 
-对应用程序用户界面的操作必须在主线程上执行，也就是说必须在主线程中执行`UIView`类的方法。创建视图对象不一定要放在主线程，但其他所有操作都应该在主线程上进行。
+**对应用程序用户界面的操作必须在主线程上执行，也就是说必须在主线程中执行`UIView`类的方法。创建视图对象不一定要放在主线程，但其他所有操作都应该在主线程上进行。**
 
 自定义打印输出视图信息，可以实现`drawRect:forViewPrintFormatter:`方法。有关如何支持打印输出视图的详细信息，可以参看[Drawing and Printing Guide for iOS](https://developer.apple.com/library/content/documentation/2DDrawing/Conceptual/DrawingPrintingiOS/Introduction/Introduction.html#//apple_ref/doc/uid/TP40010156)。
+
+## Demo
+
+示例代码下载地址：https://github.com/zhangshijian/UIViewDemo
