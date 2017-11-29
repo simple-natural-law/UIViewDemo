@@ -11,6 +11,7 @@
 		1AE841571FCD60BF0050E383 /* DrawPathViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AE841561FCD60BF0050E383 /* DrawPathViewController.m */; };
 		1AE8415B1FCD67E10050E383 /* AnimationUseBlockViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AE8415A1FCD67E10050E383 /* AnimationUseBlockViewController.m */; };
 		1AE8415F1FCE5C140050E383 /* AnimationUseBeginCommitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AE8415E1FCE5C140050E383 /* AnimationUseBeginCommitViewController.m */; };
+		1AE841631FCE64C30050E383 /* ViewTransitionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AE841621FCE64C30050E383 /* ViewTransitionViewController.m */; };
 		1AF42C0C1FBD385C00295882 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AF42C0B1FBD385C00295882 /* AppDelegate.m */; };
 		1AF42C0F1FBD385C00295882 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AF42C0E1FBD385C00295882 /* HomeViewController.m */; };
 		1AF42C121FBD385C00295882 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1AF42C101FBD385C00295882 /* Main.storyboard */; };
@@ -30,6 +31,8 @@
 		1AE8415A1FCD67E10050E383 /* AnimationUseBlockViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AnimationUseBlockViewController.m; sourceTree = "<group>"; };
 		1AE8415D1FCE5C140050E383 /* AnimationUseBeginCommitViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AnimationUseBeginCommitViewController.h; sourceTree = "<group>"; };
 		1AE8415E1FCE5C140050E383 /* AnimationUseBeginCommitViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AnimationUseBeginCommitViewController.m; sourceTree = "<group>"; };
+		1AE841611FCE64C30050E383 /* ViewTransitionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewTransitionViewController.h; sourceTree = "<group>"; };
+		1AE841621FCE64C30050E383 /* ViewTransitionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewTransitionViewController.m; sourceTree = "<group>"; };
 		1AF42C071FBD385C00295882 /* UIViewDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UIViewDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1AF42C0A1FBD385C00295882 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		1AF42C0B1FBD385C00295882 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -86,6 +89,15 @@
 			path = "BeginCommit动画";
 			sourceTree = "<group>";
 		};
+		1AE841601FCE649B0050E383 /* 过渡转换动画 */ = {
+			isa = PBXGroup;
+			children = (
+				1AE841611FCE64C30050E383 /* ViewTransitionViewController.h */,
+				1AE841621FCE64C30050E383 /* ViewTransitionViewController.m */,
+			);
+			path = "过渡转换动画";
+			sourceTree = "<group>";
+		};
 		1AF42BFE1FBD385C00295882 = {
 			isa = PBXGroup;
 			children = (
@@ -105,6 +117,7 @@
 		1AF42C091FBD385C00295882 /* UIViewDemo */ = {
 			isa = PBXGroup;
 			children = (
+				1AE841601FCE649B0050E383 /* 过渡转换动画 */,
 				1AE8415C1FCE5A8B0050E383 /* BeginCommit动画 */,
 				1AE841581FCD65F30050E383 /* 基于Block的动画 */,
 				1AE841511FCD5BE50050E383 /* 绘制自定义图形 */,
@@ -208,6 +221,7 @@
 				1AE8415B1FCD67E10050E383 /* AnimationUseBlockViewController.m in Sources */,
 				1AF42C231FC80DC500295882 /* AutoresizingMaskViewController.m in Sources */,
 				1AF42C0F1FBD385C00295882 /* HomeViewController.m in Sources */,
+				1AE841631FCE64C30050E383 /* ViewTransitionViewController.m in Sources */,
 				1AF42C1A1FBD385C00295882 /* main.m in Sources */,
 				1AF42C261FC8142E00295882 /* RootNavigationController.m in Sources */,
 				1AE8415F1FCE5C140050E383 /* AnimationUseBeginCommitViewController.m in Sources */,

@@ -205,5 +205,23 @@
             </objects>
             <point key="canvasLocation" x="3556" y="63.418290854572717"/>
         </scene>
+        <!--过渡转换动画-->
+        <scene sceneID="MF3-Sh-ANJ">
+            <objects>
+                <viewController storyboardIdentifier="ViewTransitionViewController" title="过渡转换动画" id="h5E-Gk-08J" customClass="ViewTransitionViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="73j-Ma-K1f"/>
+                        <viewControllerLayoutGuide type="bottom" id="Ere-Y4-5LA"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="DbG-5s-ABx">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zLm-nW-i5e" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4456" y="59"/>
+        </scene>
     </scenes>
 </document>
