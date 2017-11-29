@@ -205,10 +205,10 @@
             </objects>
             <point key="canvasLocation" x="2796" y="72"/>
         </scene>
-        <!--过渡转换动画-->
+        <!--过渡转换动画-更改子视图-->
         <scene sceneID="MF3-Sh-ANJ">
             <objects>
-                <viewController storyboardIdentifier="ViewTransitionViewController" title="过渡转换动画" id="h5E-Gk-08J" customClass="ViewTransitionViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ViewTransitionViewController" title="过渡转换动画--更改子视图" id="h5E-Gk-08J" customClass="ViewTransitionViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="73j-Ma-K1f"/>
                         <viewControllerLayoutGuide type="bottom" id="Ere-Y4-5LA"/>
