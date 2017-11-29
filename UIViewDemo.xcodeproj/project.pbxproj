@@ -89,13 +89,13 @@
 			path = "BeginCommit动画";
 			sourceTree = "<group>";
 		};
-		1AE841601FCE649B0050E383 /* 过渡转换动画 */ = {
+		1AE841601FCE649B0050E383 /* 过渡转换动画--更改子视图 */ = {
 			isa = PBXGroup;
 			children = (
 				1AE841611FCE64C30050E383 /* ViewTransitionViewController.h */,
 				1AE841621FCE64C30050E383 /* ViewTransitionViewController.m */,
 			);
-			path = "过渡转换动画";
+			path = "过渡转换动画--更改子视图";
 			sourceTree = "<group>";
 		};
 		1AF42BFE1FBD385C00295882 = {
@@ -117,7 +117,7 @@
 		1AF42C091FBD385C00295882 /* UIViewDemo */ = {
 			isa = PBXGroup;
 			children = (
-				1AE841601FCE649B0050E383 /* 过渡转换动画 */,
+				1AE841601FCE649B0050E383 /* 过渡转换动画--更改子视图 */,
 				1AE8415C1FCE5A8B0050E383 /* BeginCommit动画 */,
 				1AE841581FCD65F30050E383 /* 基于Block的动画 */,
 				1AE841511FCD5BE50050E383 /* 绘制自定义图形 */,
