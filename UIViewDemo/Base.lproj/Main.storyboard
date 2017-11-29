@@ -251,5 +251,23 @@
             </objects>
             <point key="canvasLocation" x="3488.8000000000002" y="71.514242878560722"/>
         </scene>
+        <!--过渡转换动画-视图间替换-->
+        <scene sceneID="Br5-bp-nBv">
+            <objects>
+                <viewController storyboardIdentifier="ReplaceTransitionViewController" title="过渡转换动画--视图间替换" id="PHT-rs-d6y" customClass="ReplaceTransitionViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="0Zu-kA-oED"/>
+                        <viewControllerLayoutGuide type="bottom" id="2vO-e0-484"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="qbf-u8-IfK">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="meW-bp-ED0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4266" y="69"/>
+        </scene>
     </scenes>
 </document>

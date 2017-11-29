@@ -35,7 +35,8 @@
                        @{@"title":@"绘制自定义图形",@"target":@"DrawPathViewController"},
                        @{@"title":@"基于Block的动画",@"target":@"AnimationUseBlockViewController"},
                        @{@"title":@"begin/commit动画",@"target":@"AnimationUseBeginCommitViewController"},
-                       @{@"title":@"过渡转换动画--更改子视图",@"target":@"ViewTransitionViewController"}];
+                       @{@"title":@"过渡转换动画--更改子视图",@"target":@"ViewTransitionViewController"},
+                       @{@"title":@"过渡转换动画--视图间替换",@"target":@"ReplaceTransitionViewController"}];
 }
 
 #pragma mark- UITableViewDataSource
