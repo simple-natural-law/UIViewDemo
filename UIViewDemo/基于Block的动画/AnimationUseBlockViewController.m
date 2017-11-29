@@ -24,19 +24,43 @@
 
 - (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {
-    
     CGPoint location = [touches.allObjects.lastObject locationInView:self.view];
     
-    [UIView animateWithDuration:0.5 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+    [UIView animateWithDuration:0.6 delay:0.0 options:UIViewAnimationOptionCurveLinear animations:^{
         
         self.targetView.center = location;
         
+        [UIView animateWithDuration:0.2 delay:0.2 options:UIViewAnimationOptionOverrideInheritedCurve | UIViewAnimationOptionOverrideInheritedDuration | UIViewAnimationOptionRepeat | UIViewAnimationOptionAutoreverse | UIViewAnimationOptionCurveEaseInOut animations:^{
+            
+            [UIView setAnimationRepeatCount:1];
+            
+            self.targetView.alpha = 0.5;
+            
+        } completion:^(BOOL finished) {
+            
+            if (finished)
+            {
+                self.targetView.alpha = 1.0;
+            }
+        }];
+        
     } completion:^(BOOL finished) {
         
-       
         if (finished)
         {
-            
+            [UIView animateWithDuration:0.2 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut | UIViewAnimationOptionRepeat | UIViewAnimationOptionAutoreverse animations:^{
+                
+                [UIView setAnimationRepeatCount:1];
+                
+                self.targetView.transform = CGAffineTransformMakeScale(1.2, 1.2);
+                
+            } completion:^(BOOL finished) {
+                
+                if (finished)
+                {
+                    self.targetView.transform = CGAffineTransformIdentity;
+                }
+            }];
         }
     }];
 }
