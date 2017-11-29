@@ -26,6 +26,11 @@
     
     self.title = @"UIViewDemo";
     
+    // 设置默认的返回按钮的文本
+    UIBarButtonItem * backButtonItem = [[UIBarButtonItem alloc] init];
+    backButtonItem.title = @"返回";
+    self.navigationItem.backBarButtonItem = backButtonItem;
+    
     self.dataArray = @[@{@"title":@"自动调整视图尺寸", @"target":@"AutoresizingMaskViewController"},
                        @{@"title":@"绘制自定义图形",@"target":@"DrawPathViewController"},
                        @{@"title":@"基于Block的动画",@"target":@"AnimationUseBlockViewController"},
