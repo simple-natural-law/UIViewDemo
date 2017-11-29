@@ -174,5 +174,36 @@
             </objects>
             <point key="canvasLocation" x="2672.8000000000002" y="65.217391304347828"/>
         </scene>
+        <!--Begin/Commit动画-->
+        <scene sceneID="3D1-Ct-fVo">
+            <objects>
+                <viewController storyboardIdentifier="AnimationUseBeginCommitViewController" title="Begin/Commit动画" id="4ll-zm-Mxt" customClass="AnimationUseBeginCommitViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="frU-LE-aAL"/>
+                        <viewControllerLayoutGuide type="bottom" id="ovi-Nn-4tS"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="gar-DU-6aw">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="点击屏幕触发动画" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Fx-XQ-7Jn">
+                                <rect key="frame" x="79" y="250" width="218" height="122"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="29"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                    <connections>
+                        <outlet property="targetLabel" destination="7Fx-XQ-7Jn" id="yr6-0J-022"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nUk-uL-3Vu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3556" y="63.418290854572717"/>
+        </scene>
     </scenes>
 </document>

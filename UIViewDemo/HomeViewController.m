@@ -28,7 +28,8 @@
     
     self.dataArray = @[@{@"title":@"自动调整视图尺寸", @"target":@"AutoresizingMaskViewController"},
                        @{@"title":@"绘制自定义图形",@"target":@"DrawPathViewController"},
-                       @{@"title":@"基于Block的动画",@"target":@"AnimationUseBlockViewController"}];
+                       @{@"title":@"基于Block的动画",@"target":@"AnimationUseBlockViewController"},
+                       @{@"title":@"begin/commit动画",@"target":@"AnimationUseBeginCommitViewController"}];
 }
 
 #pragma mark- UITableViewDataSource
